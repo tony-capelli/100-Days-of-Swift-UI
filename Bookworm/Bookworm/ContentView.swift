@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
+    
+    @State private var showingAddScreen = false
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, wld!")
+        NavigationView{
+            Text("Count: \(books.count)")
+                .navigationTitle("Bookworm")
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        Button{
+                            showingAddScreen.toggle()
+                        } label: {
+                            Label("Add book", systemImage: "plus")
+                        }
+                    }
+                }
         }
-        .padding()
+        .sheet(isPresented: $showingAddScreen){
+            AddBookView()
+        }
     }
 }
 
