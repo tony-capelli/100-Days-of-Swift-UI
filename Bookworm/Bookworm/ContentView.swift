@@ -25,10 +25,10 @@ struct ContentView: View {
                                 .font(.largeTitle)
                             
                             VStack(alignment: .leading){
-                                Text(book.title ?? "Unknown title")
+                                Text(book.title ?? "Unknown Title")
                                     .font(.headline)
                                 
-                                Text(book.author ?? "Unknown author")
+                                Text(book.author ?? "Unknown Author")
                                     .foregroundColor(.secondary)
                             }
                         }
