@@ -1,14 +1,14 @@
 //
 //  ContentView.swift
-//  MeteoApp
+//  CoreDataProject
 //
-//  Created by Tony Capelli on 30/09/22.
+//  Created by Tony Capelli on 02/10/22.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var location = LocaationManager()
+    @Environment(\.managedObjectContext) var moc
     
     var body: some View {
         VStack {
