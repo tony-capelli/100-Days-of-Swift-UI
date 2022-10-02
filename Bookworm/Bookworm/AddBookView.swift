@@ -14,7 +14,7 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = ""
+    @State private var genre = "Horror"
     @State private var review = ""
     
     let genres = ["Fantasy", "Horror", "Mistery", "Kids", "Poetry", "Romance", "Thriller"]
@@ -49,13 +49,22 @@ struct AddBookView: View {
                         myNewBook.rating = Int16(rating)
                         myNewBook.genre = genre
                         myNewBook.review = review
+                        myNewBook.date = Date.now
                         
                         try? moc.save()
                         dismiss()
                     }
                 }
+                .disabled(!isFormCorrect())
             }
             .navigationTitle("Add Book")
+        }
+    }
+    func isFormCorrect()->Bool {
+        if title.isEmpty || author.isEmpty || review.isEmpty || genre.isEmpty {
+            return false
+        } else {
+            return true
         }
     }
 }

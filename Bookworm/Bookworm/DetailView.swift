@@ -16,30 +16,36 @@ struct DetailView: View {
     let book: Book
     
     var body: some View {
-        ScrollView{
-            ZStack(alignment: .bottomTrailing){
-                Image(book.genre ?? "Fantasy")
-                    .resizable()
-                    .scaledToFit()
+        VStack {
+            ScrollView{
+                ZStack(alignment: .bottomTrailing){
+                    Image(book.genre ?? "Fantasy")
+                        .resizable()
+                        .scaledToFit()
+                    
+                    Text(book.genre?.uppercased() ?? "FANTASY")
+                        .font(.caption)
+                        .fontWeight(.black)
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .clipShape(Capsule())
+                        .offset(x:-5, y:-5)
+                }
                 
-                Text(book.genre?.uppercased() ?? "FANTASY")
-                    .font(.caption)
-                    .fontWeight(.black)
-                    .padding(8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .clipShape(Capsule())
-                    .offset(x:-5, y:-5)
+                Text(book.author ?? "Unknown Author")
+                    .font(.title)
+                
+                Text(book.review ?? "no review")
+                    .padding()
+                
+                Text(book.date?.formatted(date: .abbreviated, time: .omitted) ?? "no date")
             }
-            
-            Text(book.author ?? "Unknown Author")
-                .font(.title)
-            
-            Text(book.review ?? "no review")
-                .padding()
+            Spacer()
             
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
+            
         }
         .navigationTitle(book.title ?? "Unknown title")
         .navigationBarTitleDisplayMode(.inline)
