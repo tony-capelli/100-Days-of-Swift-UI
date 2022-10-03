@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630FCFF728EB0485000F2AAD /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FCFF628EB0485000F2AAD /* FilteredList.swift */; };
+		630FCFFC28EB0BA9000F2AAD /* Candy+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FCFF828EB0BA9000F2AAD /* Candy+CoreDataClass.swift */; };
+		630FCFFD28EB0BA9000F2AAD /* Candy+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FCFF928EB0BA9000F2AAD /* Candy+CoreDataProperties.swift */; };
+		630FCFFE28EB0BA9000F2AAD /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FCFFA28EB0BA9000F2AAD /* Country+CoreDataClass.swift */; };
+		630FCFFF28EB0BA9000F2AAD /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FCFFB28EB0BA9000F2AAD /* Country+CoreDataProperties.swift */; };
 		6362F27928E9E69200DECF0E /* CoreDataProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362F27828E9E69200DECF0E /* CoreDataProjectApp.swift */; };
 		6362F27B28E9E69200DECF0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362F27A28E9E69200DECF0E /* ContentView.swift */; };
 		6362F27D28E9E69400DECF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6362F27C28E9E69400DECF0E /* Assets.xcassets */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630FCFF628EB0485000F2AAD /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		630FCFF828EB0BA9000F2AAD /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataClass.swift"; sourceTree = "<group>"; };
+		630FCFF928EB0BA9000F2AAD /* Candy+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		630FCFFA28EB0BA9000F2AAD /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = "<group>"; };
+		630FCFFB28EB0BA9000F2AAD /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6362F27528E9E69200DECF0E /* CoreDataProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6362F27828E9E69200DECF0E /* CoreDataProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProjectApp.swift; sourceTree = "<group>"; };
 		6362F27A28E9E69200DECF0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,8 +65,13 @@
 		6362F27728E9E69200DECF0E /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
+				630FCFF828EB0BA9000F2AAD /* Candy+CoreDataClass.swift */,
+				630FCFF928EB0BA9000F2AAD /* Candy+CoreDataProperties.swift */,
+				630FCFFA28EB0BA9000F2AAD /* Country+CoreDataClass.swift */,
+				630FCFFB28EB0BA9000F2AAD /* Country+CoreDataProperties.swift */,
 				6362F27828E9E69200DECF0E /* CoreDataProjectApp.swift */,
 				6362F27A28E9E69200DECF0E /* ContentView.swift */,
+				630FCFF628EB0485000F2AAD /* FilteredList.swift */,
 				6362F28828E9E7B100DECF0E /* CoreDataProject.xcdatamodeld */,
 				6362F28628E9E6A100DECF0E /* DataController.swift */,
 				6362F27C28E9E69400DECF0E /* Assets.xcassets */,
@@ -147,6 +162,11 @@
 				6362F28728E9E6A100DECF0E /* DataController.swift in Sources */,
 				6362F28A28E9E7B100DECF0E /* CoreDataProject.xcdatamodeld in Sources */,
 				6362F27928E9E69200DECF0E /* CoreDataProjectApp.swift in Sources */,
+				630FCFFD28EB0BA9000F2AAD /* Candy+CoreDataProperties.swift in Sources */,
+				630FCFF728EB0485000F2AAD /* FilteredList.swift in Sources */,
+				630FCFFE28EB0BA9000F2AAD /* Country+CoreDataClass.swift in Sources */,
+				630FCFFC28EB0BA9000F2AAD /* Candy+CoreDataClass.swift in Sources */,
+				630FCFFF28EB0BA9000F2AAD /* Country+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
