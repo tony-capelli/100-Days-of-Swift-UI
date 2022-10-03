@@ -7,13 +7,25 @@
 
 import SwiftUI
 
+
+extension Color {
+    static var random: Color {
+        return Color(
+            red: .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue: .random(in: 0...1)
+        )
+    }
+}
+
 struct DetailView: View {
     let user: User
+    
     
     var body: some View {
         ScrollView(.vertical){
             Image(systemName: "circle.fill")
-                .foregroundColor(.blue)
+                .foregroundColor(Color.random)
                 .font(.system(size: 150))
                 .overlay{
                     Text(user.name.prefix(1))
@@ -23,7 +35,7 @@ struct DetailView: View {
             VStack{
                 Text(user.name)
                     .font(.headline)
-
+                
                 Text(user.email)
                     .font(.caption)
                     .fontWeight(.thin)
@@ -35,19 +47,27 @@ struct DetailView: View {
                     Text(user.address)
                         .font(.caption2)
                         .opacity(0.5)
+                        .padding()
                 }
                 
                 Divider()
+         
                 
-                Text("About me")
-                    .font(.headline)
-                    .padding(.top)
-                
-                Text(user.about)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical,2)
-                    .padding(.horizontal)
+                VStack{
+                    Text("ABOUT ME")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .padding(.vertical, 4)
+                        .padding(.top, 8)
+                    Text(user.about)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .padding([.bottom,.horizontal])
+                }
+                .background()
+                .backgroundStyle(.thinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding()
                 
                 HStack {
                     VStack(alignment: .leading){
@@ -55,23 +75,27 @@ struct DetailView: View {
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         if user.isActive {
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
+                            Label("ACTIVE", systemImage: "star.fill")
+                                .foregroundColor(.yellow)
                         } else {
                             Text("Not active")
                         }
                     }
+                    .padding()
                     Spacer()
                     
                     VStack(alignment: .trailing){
                         Text("USER SINCE")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                        Text(user.registered)
+                        Text("\(user.registered.formatted(date: .abbreviated, time: .omitted))")
                     }
-                    .padding(.vertical)
+                    .padding()
                 }
-                .padding(.horizontal)
+                .background()
+                .backgroundStyle(.thinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding([.bottom,.horizontal])
                 
                 Divider()
                 Text("Friends")
@@ -83,6 +107,7 @@ struct DetailView: View {
                                 HStack{
                                     Image(systemName: "circle.fill")
                                         .font(.title)
+                                        .foregroundColor(Color.random)
                                         .overlay{
                                             Text(friend.name.prefix(1))
                                                 .foregroundColor(.white)
@@ -90,10 +115,14 @@ struct DetailView: View {
                                     Text(friend.name)
                                 }
                             }
+                            .padding()
                         }
+                        .background()
+                        .backgroundStyle(.thinMaterial)
+                        .clipShape(Capsule())
                     }
                 }
-               
+                
             }
         }
         .navigationTitle(("User Detail"))

@@ -47,10 +47,11 @@ struct ContentView: View {
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
                 
-                if let decodedData = try? JSONDecoder().decode([User].self, from: data) {
+                if let decodedData = try? decoder.decode([User].self, from: data) {
                     users = decodedData
-                    print("ok")
                 }
             } catch {
                 fatalError()

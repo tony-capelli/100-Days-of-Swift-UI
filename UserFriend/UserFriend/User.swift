@@ -16,7 +16,7 @@ struct User: Decodable, Identifiable{
     let email: String
     let address: String
     let about: String
-    let registered: String
+    let registered: Date
     let tags: [String]
     let friends: [Friend]
     
