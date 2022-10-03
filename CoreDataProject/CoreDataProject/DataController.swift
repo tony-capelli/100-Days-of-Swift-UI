@@ -15,7 +15,10 @@ class DataController: ObservableObject {
         container.loadPersistentStores { descroption, error in
             if let error = error {
                 print("Failer to load Core Data: \(error.localizedDescription)")
+                return
             }
+            
+            self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
 }

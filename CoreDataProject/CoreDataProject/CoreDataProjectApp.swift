@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CoreDataProjectApp: App {
-    let dataController = DataController()
+    @StateObject private var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
