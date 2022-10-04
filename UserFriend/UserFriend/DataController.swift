@@ -9,13 +9,14 @@ import Foundation
 import CoreData
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "Model")
+    let container = NSPersistentContainer(name: "ProvaData")
     
     init(){
         container.loadPersistentStores{ descriptors, error in
             if let error = error {
                 print("Failed to load Core Data \(error.localizedDescription)")
             }
+            self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
 }

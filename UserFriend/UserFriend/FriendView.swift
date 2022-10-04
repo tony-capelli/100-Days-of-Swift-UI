@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FriendView: View {
-    let friend: User.Friend
+    let friend: CachedFriend
     var body: some View {
-        Text(friend.name)
+        Text(friend.wrappedName)
     }
 }
 

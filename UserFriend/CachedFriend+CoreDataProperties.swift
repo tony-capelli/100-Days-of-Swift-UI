@@ -16,14 +16,13 @@ extension CachedFriend {
         return NSFetchRequest<CachedFriend>(entityName: "CachedFriend")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var user: CachedUser?
-    
+
     var wrappedName: String {
         name ?? "Unknown name"
     }
-
 }
 
 extension CachedFriend : Identifiable {

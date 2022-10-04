@@ -16,17 +16,17 @@ extension CachedUser {
         return NSFetchRequest<CachedUser>(entityName: "CachedUser")
     }
 
-    @NSManaged public var about: String?
-    @NSManaged public var address: String?
-    @NSManaged public var age: Int16
-    @NSManaged public var company: String?
-    @NSManaged public var email: String?
-    @NSManaged public var formattedDate: String?
-    @NSManaged public var id: UUID?
     @NSManaged public var isActive: Bool
+    @NSManaged public var email: String?
+    @NSManaged public var address: String?
+    @NSManaged public var company: String?
+    @NSManaged public var registered: Date?
+    @NSManaged public var about: String?
+    @NSManaged public var age: Int16
     @NSManaged public var name: String?
+    @NSManaged public var id: String?
     @NSManaged public var friends: NSSet?
-
+    
     var wrappedName: String {
         name ?? "Unknown name"
     }
@@ -43,12 +43,16 @@ extension CachedUser {
         email ?? "Unknown mail"
     }
     
-    var wrappedFormattedDate: String {
-        formattedDate ?? "N/A"
+    var wrappedAddress: String {
+        address ?? "Unknown address"
     }
     
-    var wrappedID: UUID {
-        id ?? UUID()
+    var wrappedFormattedDate: Date {
+        registered ?? Date()
+    }
+    
+    var wrappedID: String {
+        id ?? "abc"
     }
     
     public var friendArray: [CachedFriend] {
@@ -59,7 +63,6 @@ extension CachedUser {
         }
     }
 
-    
 }
 
 // MARK: Generated accessors for friends

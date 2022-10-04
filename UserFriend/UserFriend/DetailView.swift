@@ -19,7 +19,7 @@ extension Color {
 }
 
 struct DetailView: View {
-    let user: User
+    let user: CachedUser
     
     
     var body: some View {
@@ -28,15 +28,15 @@ struct DetailView: View {
                 .foregroundColor(Color.random)
                 .font(.system(size: 150))
                 .overlay{
-                    Text(user.name.prefix(1))
+                    Text(user.wrappedName.prefix(1))
                         .foregroundColor(.white)
                         .font(.system(size: 100))
                 }
             VStack{
-                Text(user.name)
+                Text(user.wrappedName)
                     .font(.title.bold())
                 
-                Text(user.email)
+                Text(user.wrappedEmail)
                     .font(.subheadline)
                     .fontWeight(.thin)
                     .padding(.bottom,3)
@@ -44,7 +44,7 @@ struct DetailView: View {
                 HStack{
                     Image(systemName: "mappin")
                         .opacity(0.5)
-                    Text(user.address)
+                    Text(user.wrappedAddress)
                         .font(.caption2)
                         .opacity(0.5)
                         .padding(.vertical)
@@ -59,7 +59,7 @@ struct DetailView: View {
                         .foregroundColor(.secondary)
                         .padding(.vertical, 4)
                         .padding(.top, 8)
-                    Text(user.about)
+                    Text(user.wrappedAbout)
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                         .padding([.bottom,.horizontal])
@@ -88,7 +88,7 @@ struct DetailView: View {
                         Text("USER SINCE")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                        Text("\(user.registered.formatted(date: .abbreviated, time: .omitted))")
+                        Text(user.wrappedFormattedDate.formatted(date: .abbreviated, time: .omitted))
                     }
                     .padding()
                 }
@@ -105,7 +105,7 @@ struct DetailView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
-                        ForEach(user.friends){ friend in
+                        ForEach(user.friendArray){ friend in
                             NavigationLink {
                                 FriendView(friend: friend)
                             }label:{
@@ -114,10 +114,10 @@ struct DetailView: View {
                                         .font(.title)
                                         .foregroundColor(Color.random)
                                         .overlay{
-                                            Text(friend.name.prefix(1))
+                                            Text(friend.wrappedName.prefix(1))
                                                 .foregroundColor(.white)
                                         }
-                                    Text(friend.name)
+                                    Text(friend.wrappedName)
                                 }
                                 .padding()
                             }
