@@ -34,10 +34,10 @@ struct DetailView: View {
                 }
             VStack{
                 Text(user.name)
-                    .font(.headline)
+                    .font(.title.bold())
                 
                 Text(user.email)
-                    .font(.caption)
+                    .font(.subheadline)
                     .fontWeight(.thin)
                     .padding(.bottom,3)
                 
@@ -47,11 +47,11 @@ struct DetailView: View {
                     Text(user.address)
                         .font(.caption2)
                         .opacity(0.5)
-                        .padding()
+                        .padding(.vertical)
                 }
                 
                 Divider()
-         
+                
                 
                 VStack{
                     Text("ABOUT ME")
@@ -98,12 +98,17 @@ struct DetailView: View {
                 .padding([.bottom,.horizontal])
                 
                 Divider()
-                Text("Friends")
-                    .font(.headline)
+                VStack(alignment: .leading) {
+                    Text("Friends")
+                        .font(.title.bold())
+                }
+                
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(user.friends){ friend in
-                            VStack(alignment:.leading){
+                            NavigationLink {
+                                FriendView(friend: friend)
+                            }label:{
                                 HStack{
                                     Image(systemName: "circle.fill")
                                         .font(.title)
@@ -114,15 +119,16 @@ struct DetailView: View {
                                         }
                                     Text(friend.name)
                                 }
+                                .padding()
                             }
-                            .padding()
+                            .buttonStyle(PlainButtonStyle())
                         }
                         .background()
                         .backgroundStyle(.thinMaterial)
                         .clipShape(Capsule())
                     }
+                    .offset(x:15)
                 }
-                
             }
         }
         .navigationTitle(("User Detail"))
