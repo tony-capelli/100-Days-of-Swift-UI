@@ -12,6 +12,8 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cachedUser: FetchedResults<CachedUser>
     
+    @State private var searchText = ""
+    
     @State private var users = [User]()
     
     var body: some View {
@@ -22,6 +24,15 @@ struct ContentView: View {
                         DetailView(user: user)
                     } label: {
                         HStack {
+                            Circle()
+                                .strokeBorder(user.isActive ? .green : .black, lineWidth: 4)
+                                .frame(width: 40, height: 40)
+                                .overlay{
+                                    Text(user.wrappedName.prefix(1))
+                                        .foregroundColor(user.isActive ? .green : .black )
+                                }
+
+                            
                             VStack (alignment: .leading) {
                                 Text(user.wrappedName)
                                     .font(.headline)
@@ -37,6 +48,10 @@ struct ContentView: View {
             }
             .toolbar{
                 EditButton()
+            }
+            .searchable(text: $searchText)
+            .onChange(of: searchText){ search in
+                cachedUser.nsPredicate = searchPredicate(query: search)
             }
             .navigationTitle("Users")
             .task {
@@ -71,6 +86,11 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    private func searchPredicate(query: String) -> NSPredicate? {
+        if query.isEmpty {return nil}
+        return NSPredicate(format: "%K CONTAINS[cd] %@", "name" ,query)
     }
     
     func EliminaUtente(at offsets: IndexSet){
