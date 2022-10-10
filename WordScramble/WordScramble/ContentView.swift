@@ -24,11 +24,15 @@ struct ContentView: View {
                         .autocapitalization(.none)
                 }
                 
-                ForEach(usedWord, id: \.self){ word in
-                    HStack{
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+                Section {
+                    ForEach(usedWord, id: \.self){ word in
+                        HStack{
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
                     }
+                    .accessibilityElement()
+                    .accessibilityLabel("\(word), \(word.count) letters")
                 }
             }
             .navigationTitle(rootWord)
