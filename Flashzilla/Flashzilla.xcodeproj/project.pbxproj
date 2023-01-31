@@ -15,6 +15,7 @@
 		639BBBA52986FD4C0030E9D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BBBA42986FD4C0030E9D2 /* ContentView.swift */; };
 		639BBBA72986FD4E0030E9D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639BBBA62986FD4E0030E9D2 /* Assets.xcassets */; };
 		639BBBAA2986FD4E0030E9D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639BBBA92986FD4E0030E9D2 /* Preview Assets.xcassets */; };
+		63B3CD26298996C500DCC629 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3CD25298996C500DCC629 /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		639BBBA42986FD4C0030E9D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		639BBBA62986FD4E0030E9D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		639BBBA92986FD4E0030E9D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		63B3CD25298996C500DCC629 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				639BBBA22986FD4C0030E9D2 /* FlashzillaApp.swift */,
 				639BBBA42986FD4C0030E9D2 /* ContentView.swift */,
 				6386999B2988094900334E75 /* Card.swift */,
+				63B3CD25298996C500DCC629 /* EditCards.swift */,
 				6386999F2988136C00334E75 /* CoreHaptics.swift */,
 				638699992988080500334E75 /* OptionalAnimation.swift */,
 				639BBBA62986FD4E0030E9D2 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 				639BBBA52986FD4C0030E9D2 /* ContentView.swift in Sources */,
 				638699A02988136C00334E75 /* CoreHaptics.swift in Sources */,
 				6386999A2988080500334E75 /* OptionalAnimation.swift in Sources */,
+				63B3CD26298996C500DCC629 /* EditCards.swift in Sources */,
 				639BBBA32986FD4C0030E9D2 /* FlashzillaApp.swift in Sources */,
 				6386999C2988094900334E75 /* Card.swift in Sources */,
 				6386999E29880A3800334E75 /* CardView.swift in Sources */,
