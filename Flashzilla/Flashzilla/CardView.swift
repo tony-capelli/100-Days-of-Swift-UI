@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct CardView: View {
     let card: Card
     var removal: (() -> Void)? = nil
@@ -30,7 +31,8 @@ struct CardView: View {
                     differentiateWithoutColor
                     ? nil
                     : RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? .green : .red)
+//                        .swipeColor(offset: offset.width)
+                        .fill(offset.width > 0 ? .green : offset.width < 0 ? .red : .white)
                 )
                 .shadow(radius: 10)
             
@@ -73,7 +75,6 @@ struct CardView: View {
                         } else {
                             feedback.notificationOccurred(.error)
                         }
-                        
                         removal?()
                     } else {
                         withAnimation(.spring()){
