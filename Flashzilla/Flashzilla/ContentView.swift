@@ -18,6 +18,12 @@ struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @State private var cards = Array<Card>(repeating: Card.example, count: 10)
     
+    @State private var timeRemaning = 100
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @Environment(\.scenePhase) var scenePhase
+    @State private var isActive = true
+    
     var body: some View {
         ZStack{
             Image("background")
@@ -25,6 +31,14 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack{
+                Text("Time: \(timeRemaning)")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
+                    .background(.black.opacity(0.5))
+                    .clipShape(Capsule())
+                
                 ZStack{
                     ForEach(0..<cards.count, id:\.self) { index in
                         CardView(card: cards[index]){
@@ -34,6 +48,15 @@ struct ContentView: View {
                         }
                         .stacked(at: index, in: cards.count)
                     }
+                }
+                .allowsTightening(timeRemaning > 0)
+                
+                if cards.isEmpty {
+                    Button("Start Again", action: resetCards)
+                        .padding()
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
                 }
             }
             
@@ -56,10 +79,36 @@ struct ContentView: View {
                 }
             }
         }
+        .onReceive(timer) { time in
+            guard isActive else { return }
+            
+            if timeRemaning > 0 {
+                timeRemaning -= 1
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                if cards.isEmpty == false {
+                    isActive = true
+                }
+            } else {
+                isActive = false
+            }
+        }
     }
     
     func removeCard(at index: Int){
         cards.remove(at: index)
+        
+        if cards.isEmpty {
+            isActive = false
+        }
+    }
+    
+    func resetCards() {
+        cards = Array<Card>(repeating: Card.example, count: 10)
+        timeRemaning = 100
+        isActive = true
     }
    
 }
