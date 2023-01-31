@@ -17,7 +17,7 @@ extension View {
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
-    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
+    @State private var cards = [Card]()
     
     @State private var timeRemaning = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -122,6 +122,8 @@ struct ContentView: View {
                 }
             }
         }
+        .sheet(isPresented: $showEditScreen, onDismiss: resetCards, content: EditCards.init)
+        .onAppear(perform: resetCards)
         .onReceive(timer) { time in
             guard isActive else { return }
             
@@ -140,6 +142,14 @@ struct ContentView: View {
         }
     }
     
+    func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "Cards") {
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decoded
+            }
+        }
+    }
+    
     func removeCard(at index: Int){
         guard index >= 0 else { return }
         cards.remove(at: index)
@@ -150,9 +160,9 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        cards = Array<Card>(repeating: Card.example, count: 10)
         timeRemaning = 100
         isActive = true
+        loadData()   
     }
    
 }
