@@ -17,7 +17,7 @@ struct ContentView: View {
                 NavigationLink{
                     Text(resort.name)
                 } label: {
-                    Image(resort.country)
+                    Image(resort.country)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 40, height: 25)
