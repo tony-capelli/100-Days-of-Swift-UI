@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(filteredList) { resort in
                 NavigationLink{
                     Text(resort.name)
                 } label: {
-                    Image(resort.country)
+                    Image(resort.country)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 40, height: 25)
@@ -33,9 +34,18 @@ struct ContentView: View {
                     }
                 }
             }
+            .searchable(text: $searchText)
             .navigationTitle("Resorts")
             
             Welcome_View()
+        }
+    }
+
+    var filteredList: [Resort] {
+        if searchText.isEmpty {
+            return resorts
+        } else {
+            return resorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }
