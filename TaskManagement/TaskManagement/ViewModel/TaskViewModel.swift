@@ -13,11 +13,11 @@ class TaskViewModel: ObservableObject {
     
     @Published var storedTask: [Task] = [
         
-        Task(taskTitle: "Meeting", taskDescription: "Discuss team task for the day", taskDate: .init(timeIntervalSince1970: 1641645497)),
-        Task(taskTitle: "Icon set", taskDescription: "Edit icon for team task for next week", taskDate: .init(timeIntervalSince1970: 1641649097)),
-        Task(taskTitle: "Prototype", taskDescription: "make and send prototype", taskDate: .init(timeIntervalSince1970: 1641656297)),
-        Task(taskTitle: "Check asset", taskDescription: "Start checking the assets", taskDate: .init(timeIntervalSince1970: 1641661897)),
-        Task(taskTitle: "Team party", taskDescription: "Make fun with team mates", taskDate: .init(timeIntervalSince1970: 1641641897))
+        Task(taskTitle: "Meeting", taskDescription: "Discuss team task for the day", taskDate: .init(timeIntervalSince1970: 1683657336)),
+        Task(taskTitle: "Icon set", taskDescription: "Edit icon for team task for next week", taskDate: .init(timeIntervalSince1970: 1683652336)),
+        Task(taskTitle: "Prototype", taskDescription: "make and send prototype", taskDate: .init(timeIntervalSince1970: 1683511336)),
+        Task(taskTitle: "Check asset", taskDescription: "Start checking the assets", taskDate: .init(timeIntervalSince1970: 1683505336)),
+        Task(taskTitle: "Team party", taskDescription: "Make fun with team mates", taskDate: .init(timeIntervalSince1970: 1683498336))
         
     ]
     
@@ -44,8 +44,11 @@ class TaskViewModel: ObservableObject {
             let calendar = Calendar.current
             
             let filtered = self.storedTask.filter{
-                return calendar.isDate($0.taskDate, inSameDayAs: Date())
+                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
             }
+                .sorted { task1, task2 in
+                    return task2.taskDate < task1.taskDate
+                }
             
             DispatchQueue.main.async {
                 withAnimation {
@@ -88,5 +91,15 @@ class TaskViewModel: ObservableObject {
         let calendar = Calendar.current
         
         return calendar.isDate(currentDay, inSameDayAs: date)
+    }
+    
+    //MARK: Checking if the currentHour is task Hour
+    func isCurrentHour(date: Date) -> Bool {
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: date)
+        let currentHour = calendar.component(.hour, from: Date())
+        
+        return hour == currentHour
     }
 }
