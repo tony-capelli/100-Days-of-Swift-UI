@@ -11,7 +11,7 @@
 		63B0A9F22A07FF8700CC35AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0A9F12A07FF8700CC35AB /* ContentView.swift */; };
 		63B0A9F42A07FF8800CC35AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B0A9F32A07FF8800CC35AB /* Assets.xcassets */; };
 		63B0A9F72A07FF8800CC35AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B0A9F62A07FF8800CC35AB /* Preview Assets.xcassets */; };
-		63B0AA002A07FFBC00CC35AB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0A9FF2A07FFBC00CC35AB /* Task.swift */; };
+		63B0AA022A08000F00CC35AB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0AA012A08000F00CC35AB /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		63B0A9F12A07FF8700CC35AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		63B0A9F32A07FF8800CC35AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B0A9F62A07FF8800CC35AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		63B0A9FF2A07FFBC00CC35AB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		63B0AA012A08000F00CC35AB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 		63B0A9FE2A07FF9F00CC35AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				63B0A9FF2A07FFBC00CC35AB /* Task.swift */,
+				63B0AA012A08000F00CC35AB /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,7 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B0A9F22A07FF8700CC35AB /* ContentView.swift in Sources */,
-				63B0AA002A07FFBC00CC35AB /* Task.swift in Sources */,
+				63B0AA022A08000F00CC35AB /* Task.swift in Sources */,
 				63B0A9F02A07FF8700CC35AB /* TaskManagementApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
